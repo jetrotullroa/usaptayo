@@ -22,7 +22,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    
+
+  end
+
+  protected
+
+  def resource_not_found
+    flash[:alert] = "The article you are looking for could not be found."
+    redirect_to articles_path
   end
 
   private
