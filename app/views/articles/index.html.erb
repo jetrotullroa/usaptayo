@@ -1,2 +1,21 @@
-<h1>Articles</h1>
-<%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
+<div class="new-article-button">
+  <%= link_to "New Article", new_article_path, class: "btn btn-default" %>
+</div>
+<h3>List of Articles</h3>
+
+<% if @articles.empty? %>
+  <h3 id="no-articles">No Article created yet.</h3>
+<% else %>
+  <% @articles.each do |article| %>
+    <div class="card article-listing-content">
+      <div class="card-block">
+        <div class="card-title article-title">
+          <%= link_to article.title, article_path(article) %>
+        </div>
+        <div class="card-body article-body">
+          <%= article.body %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
